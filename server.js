@@ -2,7 +2,7 @@ const express = require('express'); // access express library in node_modules
 const bodyParser = require('body-parser');
 const app = express(); // express constructor
 app.use(bodyParser.json());
-
+app.set('view engine', 'pug')
 
 // Creating object to contain user data
 const mockUserData = [
@@ -58,6 +58,11 @@ app.post('/login', (req, res) => {
                         message: 'password and username do not match'
                 })
         }
+})
+
+// Using PUG template
+app.get('/', (req, res) => {
+        res.render('index', {title: "Home Page", content: "This is a content in Home Page!"})
 })
 
 /**
