@@ -32,14 +32,17 @@ app.get('/users/:id', (req, res) => {
         })
 })
 
-// Handling POST request to 'login' endpoint
+/**
+ * Handling POST request to 'login' endpoint 
+ * As a security precaution, you should never save passwords directly into your database. Use a tool like bcrypt to save a hashed version, which will be decoded at login. 
+ */
 app.post('/login', (req, res) => {
         // Typically passwords are encrypted using something like bcrypt before sending to database
         const username = req.body.username;
         const password = req.body.password;
 
         // This should come from db
-        const mockUsername = "BillyTheKid"
+        const mockUsername = "billyTheKid"
         const mockPassword = "superSecret"
 
         if (username === mockUsername && password === mockPassword) {
